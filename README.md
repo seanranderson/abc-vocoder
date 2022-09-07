@@ -8,6 +8,8 @@ carriers with a frequency equivalent to the center frequency
 of each bandpass filter in the filterbank are used. If you 
 would like some background on how vocoders work, see 
 [Loizou (2006)](https://ecs.utdallas.edu/loizou/cimplants/chap_loizou_review2006.pdf).
+This vocoder was developed for a collaboration with Dr. 
+Kristin Uhler.
 
 To get started, enter ABCVocoder into the command line. 
 There is a sample file (Glow.wav) for convenience. The output 
