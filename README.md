@@ -11,6 +11,8 @@ would like some background on how vocoders work, see
 This vocoder was developed for a collaboration with Dr. 
 Kristin Uhler.
 
-To get started, enter ABCVocoder into the command line. 
 There is a sample file (Glow.wav) for convenience. The output 
-is RMS normalized to the input file.
+is RMS normalized to the input file. To get started: 
+1. Open ABCVocoder.m
+2. Click "Run" in MATLAB
+3. Follow the instructions in the program (upload files, change parameters, vocode!)
