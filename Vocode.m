@@ -11,6 +11,7 @@
 %         t - time vector for plotting - 1 x j column vector
 % 
 % Sean R. Anderson -- sean.hearing@gmail.com -- 081822
+% 091522 v1.1 - Added mono only check and clipping check 
 
 function [vocoded_signal,t] = Vocode(wavfile,cf,audiogram,spread,compressionratio,fs)
 
@@ -33,6 +34,10 @@ gain = CalcGain(centers,audiogram);
 
 %% 4. Filter signals
 [y,ifs] = audioread(wavfile);
+% If stereo file, convert to mono
+if size(y,2) > 1
+    y = y(:,1);
+end
 
 if ifs ~= fs
     % Resample if there is a mismatch
@@ -100,5 +105,9 @@ vocoded_signal = sum(channel_output,1);
 vocode_gain = 20*log10(rms(y)) - 20*log10(rms(vocoded_signal));
 % Set RMS energy equal to input
 vocoded_signal = 10 ^ (vocode_gain/20) * vocoded_signal;
+% Check to make sure signal has not clipped
+if max(vocoded_signal) > 1
+    vocoded_signal = vocoded_signal/max(vocoded_signal);
+end
 
 end
