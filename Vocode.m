@@ -106,8 +106,8 @@ vocode_gain = 20*log10(rms(y)) - 20*log10(rms(vocoded_signal));
 % Set RMS energy equal to input
 vocoded_signal = 10 ^ (vocode_gain/20) * vocoded_signal;
 % Check to make sure signal has not clipped
-if max(vocoded_signal) > 1
-    vocoded_signal = vocoded_signal/max(vocoded_signal);
+if max(abs(vocoded_signal)) >= 1
+    vocoded_signal = 0.95 * vocoded_signal/max(abs(vocoded_signal));
 end
 
 end
